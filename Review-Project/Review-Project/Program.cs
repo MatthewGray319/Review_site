@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Review_Project.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<Review_ProjectContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Review_ProjectContext") ?? throw new InvalidOperationException("Connection string 'Review_ProjectContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
