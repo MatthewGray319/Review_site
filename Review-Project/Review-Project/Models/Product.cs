@@ -8,4 +8,8 @@
         public virtual List<Review>? Reviews { get; set; }
         public string Description { get; set; }
     }
+
+    public class Review
+    {
+    }
 }
