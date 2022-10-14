@@ -10,85 +10,85 @@ using Review_Project.Models;
 
 namespace Review_Project.Controllers
 {
-    public class ReviewModelsController : Controller
+    public class ProductsController : Controller
     {
         private readonly ReviewContext _context;
 
-        public ReviewModelsController(ReviewContext context)
+        public ProductsController(ReviewContext context)
         {
             _context = context;
         }
 
-        // GET: ReviewModels
+        // GET: Products
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Reviews.ToListAsync());
+              return View(await _context.Products.ToListAsync());
         }
 
-        // GET: ReviewModels/Details/5
+        // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Reviews == null)
+            if (id == null || _context.Products == null)
             {
                 return NotFound();
             }
 
-            var reviewModel = await _context.Reviews
+            var product = await _context.Products
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (reviewModel == null)
+            if (product == null)
             {
                 return NotFound();
             }
 
-            return View(reviewModel);
+            return View(product);
         }
 
-        // GET: ReviewModels/Create
+        // GET: Products/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: ReviewModels/Create
+        // POST: Products/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Content,ProductId")] ReviewModel reviewModel)
+        public async Task<IActionResult> Create([Bind("Id,Name,Image,Description")] Product product)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(reviewModel);
+                _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(reviewModel);
+            return View(product);
         }
 
-        // GET: ReviewModels/Edit/5
+        // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Reviews == null)
+            if (id == null || _context.Products == null)
             {
                 return NotFound();
             }
 
-            var reviewModel = await _context.Reviews.FindAsync(id);
-            if (reviewModel == null)
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
             {
                 return NotFound();
             }
-            return View(reviewModel);
+            return View(product);
         }
 
-        // POST: ReviewModels/Edit/5
+        // POST: Products/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Content,ProductId")] ReviewModel reviewModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Image,Description")] Product product)
         {
-            if (id != reviewModel.Id)
+            if (id != product.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace Review_Project.Controllers
             {
                 try
                 {
-                    _context.Update(reviewModel);
+                    _context.Update(product);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ReviewModelExists(reviewModel.Id))
+                    if (!ProductExists(product.Id))
                     {
                         return NotFound();
                     }
@@ -113,49 +113,49 @@ namespace Review_Project.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(reviewModel);
+            return View(product);
         }
 
-        // GET: ReviewModels/Delete/5
+        // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Reviews == null)
+            if (id == null || _context.Products == null)
             {
                 return NotFound();
             }
 
-            var reviewModel = await _context.Reviews
+            var product = await _context.Products
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (reviewModel == null)
+            if (product == null)
             {
                 return NotFound();
             }
 
-            return View(reviewModel);
+            return View(product);
         }
 
-        // POST: ReviewModels/Delete/5
+        // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Reviews == null)
+            if (_context.Products == null)
             {
-                return Problem("Entity set 'ReviewContext.Reviews'  is null.");
+                return Problem("Entity set 'ReviewContext.Products'  is null.");
             }
-            var reviewModel = await _context.Reviews.FindAsync(id);
-            if (reviewModel != null)
+            var product = await _context.Products.FindAsync(id);
+            if (product != null)
             {
-                _context.Reviews.Remove(reviewModel);
+                _context.Products.Remove(product);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ReviewModelExists(int id)
+        private bool ProductExists(int id)
         {
-          return _context.Reviews.Any(e => e.Id == id);
+          return _context.Products.Any(e => e.Id == id);
         }
     }
 }

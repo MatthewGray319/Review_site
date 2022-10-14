@@ -3,8 +3,7 @@ using Review_Project;
 
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<Review_ProjectContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Review_ProjectContext") ?? throw new InvalidOperationException("Connection string 'Review_ProjectContext' not found.")));
+
 
 // Add services to the container.
 // Add services to the container.

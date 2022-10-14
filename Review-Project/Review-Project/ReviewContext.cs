@@ -7,7 +7,6 @@ namespace Review_Project
     {
         public DbSet<ReviewModel>? Reviews {get; set;}
         public DbSet<Product>? Products { get; set; }
-        public DbSet<ProductReview>? ProductReviews { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -22,8 +21,6 @@ namespace Review_Project
                 new Product() { Id = 1, Name = "Sunoco", Description = "Gasoline" });
             model.Entity<ReviewModel>().HasData(
                 new ReviewModel() { Id = 1, Name = "Elon Musk", Content = "Horrible Product.", ProductId = 1 });
-            model.Entity<ProductReview>().HasData(
-                new ProductReview(){ Id = 1, ProductId = 1, ReviewId = 1});
             base.OnModelCreating(model);
         }
     }
