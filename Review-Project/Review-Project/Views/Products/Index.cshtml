@@ -4,21 +4,22 @@
     ViewData["Title"] = "Index";
 }
 
+<br>
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="class1" asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table" border=1>
     <thead>
         <tr>
-            <th>
+            <th class ="class1">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th>
+            <th class="class1">
                 @Html.DisplayNameFor(model => model.Image)
             </th>
-            <th>
+            <th class="class1">
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th></th>
@@ -27,13 +28,13 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+                <td class ="class1">
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
+                <td class="class1">
                 @Html.DisplayFor(modelItem => item.Image)
             </td>
-            <td>
+                <td class="class1">
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
@@ -45,4 +46,8 @@
 }
     </tbody>
 </table>
+    <p class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="ReviewModels" asp-action="Index">See reviews</a>
+    </p>
+
 
