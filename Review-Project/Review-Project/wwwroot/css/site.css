@@ -8,6 +8,11 @@
     background-image: linear-gradient(to top, rgba(0,0,) )
 }
 
+.deleteclass {
+font-weight: bold;
+color: red;
+
+}
 
 
 
@@ -31,7 +36,9 @@ html {
 
 body {
     margin-bottom: 60px;
+
     background-image: linear-gradient(to bottom, white, grey);
+
 }
 
 body {margin:0;}
