@@ -5,7 +5,7 @@
 
 .main {
     width: 100%;
-    background linear-gradient(to top, rgba(0,0,) )
+    background-image: linear-gradient(to top, rgba(0,0,) )
 }
 
 .deleteclass {
@@ -36,6 +36,9 @@ html {
 
 body {
     margin-bottom: 60px;
+
+    background-image: linear-gradient(to bottom, white, grey);
+
 }
 
 body {margin:0;}
