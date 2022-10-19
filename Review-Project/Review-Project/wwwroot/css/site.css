@@ -5,7 +5,7 @@
 
 .main {
     width: 100%;
-    background linear-gradient(to top, rgba(0,0,) )
+    background-image: linear-gradient(to top, rgba(0,0,) )
 }
 
 
@@ -31,7 +31,7 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-image: url(https://img.freepik.com/premium-photo/blurred-background-grocery-store_23-2148216105.jpg?w=2000)
+    background-image: linear-gradient(to bottom, white, grey);
 }
 
 body {margin:0;}
